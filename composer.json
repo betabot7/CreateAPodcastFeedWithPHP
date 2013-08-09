@@ -1,0 +1,22 @@
+{
+    "require": {
+        "php": ">=5.3",
+        "pimple/pimple": "dev-master",
+        "slim/slim": "dev-master",
+        "slim/views": "dev-master",
+        "twig/twig": "dev-master",
+        "vrana/notorm": "dev-master",
+        "nass600/get-id3": "dev-master"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "3.*"
+    },
+
+    "autoload": {
+        "classmap": [            
+            "include/",
+            "lib/"
+        ]
+    }
+}

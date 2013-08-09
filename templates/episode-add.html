@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block page_title %}Add an Episode{% endblock %}
+{% block title %}Add an Episode{% endblock %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data" action="/episode">
+ <fieldset>
+  <legend>Details</legend>
+
+  <label>Title</label>
+  <input name="title" type="text" placeholder="Please enter a title...">
+
+  <label>Author</label>
+  <input name="author" type="text" placeholder="Please enter the author..." value="">        
+
+  <label>Summary</label>
+  <textarea name="summary" cols="50" rows="2" placeholder="Please enter a summary..."></textarea>    
+
+  <label>Description</label>
+  <textarea name="description" cols="50" rows="5" placeholder="Please enter a description..."></textarea>    
+
+  <label>Audio File</label>
+  <input name="file" type="file" />
+    
+  <div class="form-actions">
+   <button type="submit" class="btn btn-primary">Add Episode</button>      
+  </div>
+ </fieldset>
+</form>
+{% endblock %}

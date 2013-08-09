@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+
+{% block page_title %}Configure your Podcast{% endblock %}
+{% block title %}Configure your Podcast{% endblock %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data" action="/configure">
+ <fieldset>
+  <legend>Details</legend>
+
+  <label>Title</label>
+  <input name="title" type="text" placeholder="Please enter a title..." value="{{ configuration.title }}" class="input-xlarge">
+
+  <label>Language</label>
+  <select name="language">
+   <option value="en">English</select>
+   <!-- You can put more languages here... -->
+  </select>
+
+  <label>Copyright</label>
+  <input name="copyright" type="text" placeholder="Please enter copyright information..." value="{{ configuration.copyright }}" class="input-xlarge">
+
+  <label>Subtitle</label>
+  <input name="subtitle" type="text" placeholder="Optionally enter a subtitle..." value="{{ configuration.subtitle }}" class="input-xlarge">
+
+  <label>Author</label>
+  <input name="author" type="text" placeholder="Please enter the Podcast's author..." value="{{ configuration.author }}" class="input-xlarge">
+
+  <label>Summary</label>
+  <textarea name="summary" cols="50" rows="2" placeholder="Please enter a summary..." class="input-xlarge">{{ configuration.summary }}</textarea>    
+
+  <label>Description</label>
+  <textarea name="description" cols="50" rows="5" placeholder="Please enter a description..." class="input-xlarge">{{ configuration.description }}</textarea>
+ </fieldset>
+  
+ <fieldset>
+  <legend>Owner Details</legend>
+  
+  <label>Name</label>
+  <input name="owner_name" type="text" placeholder="Please enter a the podcast owner's name..." value="{{ configuration.owner_name }}" class="input-xlarge">
+
+  <label>E-mail</label>
+  <input name="owner_email" type="text" placeholder="Please enter a the podcast owner's e-mail..." value="{{ configuration.owner_email }}" class="input-xlarge">
+ </fieldset>
+
+ <fieldset>
+  <legend>Categorization</legend>
+
+  <label>Categories</label>
+  <select name="categories[]" multiple="true" class="input-xlarge">
+   <optgroup label="Arts">
+    <option value="Arts|Design">Design</option> 
+    <option value="Arts|Fashion & Beauty">Fashion & Beauty</option> 
+    <option value="Arts|Food">Food</option> 
+    <option value="Arts|Literature">Literature</option> 
+    <option value="Arts|Performing Arts">Performing Arts</option>   
+    <option value="Arts|Visual Arts">Visual Arts</option>   
+   </optgroup>
+   <optgroup label="Business">
+    <option value="Business|Business News">Business News</option>   
+    <option value="Business|Careers">Careers</option>   
+    <option value="Business|Investing">Investing</option>   
+    <option value="Business|Management & Marketing">Management & Marketing</option> 
+    <option value="Business|Shopping">Shopping</option> 
+   </optgroup>
+   <option value="Comedy">Comedy</option>
+   <optgroup label="Education">
+    <option value="Education|Education">Education</option>  
+    <option value="Education|Education Technology" selected="selected">Education Technology</option>    
+    <option value="Education|Higher Education">Higher Education</option>    
+    <option value="Education|K-12">K-12</option>    
+    <option value="Education|Language Courses">Language Courses</option>    
+    <option value="Education|Training" selected="selected">Training</option>    
+   </optgroup>
+   <optgroup label="Games & Hobbies">
+    <option value="Games & Hobbies|Automotive">Automotive</option>  
+    <option value="Games & Hobbies|Aviation">Aviation</option>  
+    <option value="Games & Hobbies|Hobbies">Hobbies</option>    
+    <option value="Games & Hobbies|Other Games">Other Games</option>    
+    <option value="Games & Hobbies|Video Games">Video Games</option>    
+   </optgroup>
+   <optgroup label="Government & Organizations">
+    <option value="Government & Organizations|Local">Local</option> 
+    <option value="Government & Organizations|National">National</option>   
+    <option value="Government & Organizations|Non-Profit">Non-Profit</option>   
+    <option value="Government & Organizations|Regional">Regional</option>   
+   </optgroup>
+   <optgroup label="Health">
+    <option value="Health|Alternative Health">Alternative Health</option>   
+    <option value="Health|Fitness & Nutrition">Fitness & Nutrition</option> 
+    <option value="Health|Self-Help">Self-Help</option> 
+    <option value="Health|Sexuality">Sexuality</option> 
+   </optgroup>
+   <option value="Kids & Family">Kids & Family</option>
+   <option value="Music">Music</option>
+   <option value="News & Politics">News & Politics</option>
+   <optgroup label="Religion & Spirituality">
+    <option value="Religion & Spirituality|Buddhism">Buddhism</option>  
+    <option value="Religion & Spirituality|Christianity">Christianity</option>  
+    <option value="Religion & Spirituality|Hinduism">Hinduism</option>  
+    <option value="Religion & Spirituality|Islam">Islam</option>    
+    <option value="Religion & Spirituality|Judaism">Judaism</option>    
+    <option value="Religion & Spirituality|Other">Other</option>    
+    <option value="Religion & Spirituality|Spirituality">Spirituality</option>  
+   </optgroup>
+   <optgroup label="Science & Medicine">
+    <option value="Science & Medicine|Medicine">Medicine</option>   
+    <option value="Science & Medicine|Natural Sciences">Natural Sciences</option>   
+    <option value="Science & Medicine|Social Sciences">Social Sciences</option> 
+   </optgroup>
+   <optgroup label="Society & Culture">
+    <option value="Society & Culture|History">History</option>  
+    <option value="Society & Culture|Personal Journals">Personal Journals</option>  
+    <option value="Society & Culture|Philosophy">Philosophy</option>    
+    <option value="Society & Culture|Places & Travel">Places & Travel</option>  
+   </optgroup>
+   <optgroup label="Sports & Recreation">
+    <option value="Sports & Recreation|Amateur">Amateur</option>    
+    <option value="Sports & Recreation|College & High School">College & High School</option>    
+    <option value="Sports & Recreation|Outdoor">Outdoor</option>    
+    <option value="Sports & Recreation|Professional">Professional</option>  
+   </optgroup>
+   <optgroup label="Technology">
+    <option value="Technology|Gadgets">Gadgets</option> 
+    <option value="Technology|Tech News">Tech News</option> 
+    <option value="Technology|Podcasting" selected="selected">Podcasting</option>   
+    <option value="Technology|Software How-To" selected="selected">Software How-To</option> 
+   </optgroup>
+   <option value="TV & Film">TV & Film</option>
+  </select>
+
+  <label>Keywords</label>
+  <textarea name="keywords" cols="50" rows="2" placeholder="Optionally enter some keywords (comma-separated)..." class="input-xlarge">{{ configuration.keywords }}</textarea>    
+
+  <label>Explicit content?</label>
+  <select name="explicit">
+   <option value="no" {% if configuration.explicit == 'no' %}selected="selected"{% endif %}>No</select>
+   <option value="yes" {% if configuration.explicit == 'yes' %}selected="selected"{% endif %}>Yes</select>
+  </select>
+ </fieldset>
+
+ <div class="form-actions">
+  <button type="submit" class="btn btn-primary">Save Configuration</button>  	
+ </div>
+</form>
+{% endblock %}

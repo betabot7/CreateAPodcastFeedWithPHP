@@ -1,0 +1,11 @@
+CREATE TABLE episodes (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    summary TEXT NULL,
+    description TEXT NULL,
+    audio_file VARCHAR(255) NOT NULL,
+    created INTEGER NOT NULL,
+   
+    PRIMARY KEY (id)
+);

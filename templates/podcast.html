@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block page_title %}Episodes{% endblock %}
+{% block title %}Episodes{% endblock %}
+
+{% block content %}
+<div class="well">
+  <a href="/episode" class="btn btn-large btn-primary">Add an Episode</a>
+</div>
+
+<table class="table table-bordered table-striped">
+ <thead>
+  <tr>
+   <td>Title</td>
+   <td>Summary</td>      
+  </tr>  
+ </thead>
+ <tbody>
+{% for episode in podcast %}
+  <tr>
+   <td>{{ episode.title }}</td>
+   <td>{{ episode.summary }}</td>      
+  </tr>
+{% endfor %}
+ </tbody>
+</table>
+{% endblock %}
